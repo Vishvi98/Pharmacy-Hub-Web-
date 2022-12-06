@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Advertisement</title>
+</head>
+<body>
+<a href="/admin/dashboard">
+  <button>Dashboard</button>
+</a>
+<a href="/admin/viewpharmacies">
+  <button>Pharmacies</button>
+</a>
+<a href="/admin/removecustomers">
+  <button>Customers</button>
+</a>
+<a href="/admin/removemedicine">
+  <button>Medicine & Groceries</button>
+</a>
+<a href="/admin/viewads">
+  <button>Ads</button>
+</a>
+<a href="/admin/settings">
+  <button>Application Settings</button>
+</a>
+<a href="/admin/technicalhelp">
+  <button>Get Technical help</button>
+</a>
+<a href="/logout">
+  <button>Logout</button>
+</a>
+<h1>Admin Add Advertisement</h1>
+<br><br>
+<form action="#" th:action="@{/admin/addadvertisement}" th:object="${addDetails}" method="post">
+  <label for="topic">Ad Topic:</label><br>
+  <input type="text" id="topic" name="topic" th:field="*{topic}"><br>
+
+  <label for="adId">Ad ID:</label><br>
+  <input type="text" id="adId" name="adId" th:field="*{id}"><br>
+
+  <label for="companyName">Company Name:</label><br>
+  <input type="text" id="companyName" name="companyName" th:field="*{companyName}"><br>
+
+  <label for="details">Details:</label><br>
+  <input type="text" id="details" name="details" th:field="*{details}"><br>
+
+  <label for="contact">Contact:</label><br>
+  <input type="text" id="contact" name="contact" th:field="*{contact}"><br>
+
+  <label for="email">Email:</label><br>
+  <input type="text" id="email" name="email" th:field="*{email}"><br>
+
+  <label for="companyAddress">Company Address:</label><br>
+  <input type="text" id="companyAddress" name="companyAddress" th:field="*{companyAddress}"><br>
+
+  <label for="imageUrl">Image URL:</label><br>
+  <input type="text" id="imageUrl" name="imageUrl" th:field="*{imageUrl}"><br>
+
+  <input type="submit" value="Add">
+</form>
+</body>
+</html>
