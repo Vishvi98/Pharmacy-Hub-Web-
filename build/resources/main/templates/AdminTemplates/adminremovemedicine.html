@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Remove Medicine</title>
+</head>
+<body>
+<a href="/admin/dashboard">
+  <button>Dashboard</button>
+</a>
+<a href="/admin/viewpharmacies">
+  <button>Pharmacies</button>
+</a>
+<a href="/admin/removecustomers">
+  <button>Customers</button>
+</a>
+<a href="/admin/removemedicine">
+  <button>Medicine & Groceries</button>
+</a>
+<a href="/admin/viewads">
+  <button>Ads</button>
+</a>
+<a href="/admin/settings">
+  <button>Application Settings</button>
+</a>
+<a href="/admin/technicalhelp">
+  <button>Get Technical help</button>
+</a>
+<a href="/logout">
+  <button>Logout</button>
+</a>
+<h1>Remove Medicine</h1>
+<br><br>
+<table>
+  <th:block th:each="medicine : ${medicineList}">
+    <tr>
+      <th th:text="${medicine.medicineName}"></th>
+      <th>
+        <form action="#" th:action="@{/admin/deletemedicine/{medicineId}(medicineId=${medicine.medicineId})}" method="post">
+          <a>
+            <button>Delete</button>
+          </a>
+        </form>
+      </th>
+    </tr>
+    <tr>
+      <td th:text="${medicine.medicineName}"></td>
+      <td th:text="${medicine.medicineId}"></td>
+      <td th:text="${medicine.pharmacyId}"></td>
+    </tr>
+
+  </th:block>
+</table>
+</body>
+</html>

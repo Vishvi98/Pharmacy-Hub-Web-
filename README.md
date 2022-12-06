@@ -1,2 +1,6 @@
-# Pharmacy-Hub-Web
-Web app for pharmacy hub
+Admin account username: admin
+
+Admin account password: abcd
+
+delete signupRestController
+remove unnecessary functions in SignupService

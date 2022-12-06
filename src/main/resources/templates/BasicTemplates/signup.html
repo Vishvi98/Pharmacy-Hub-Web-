@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+</head>
+<body>
+    <a href="/aboutus">
+        <button>About Us</button>
+    </a>
+    <a href="/contactus">
+        <button>Contact Us</button>
+    </a>
+    <a href="/login">
+        <button>Login</button>
+    </a>
+    <a href="/signup">
+        <button>Signup</button>
+    </a>
+  <h1>Sign Up</h1>
+    <br><br>
+  <form action="#" th:action="@{/signup}" th:object="${signupDetails}" method="post">
+      <label for="pharmacyName">Name of pharmacy:</label><br>
+      <input type="text" id="pharmacyName" name="pharmacyName" th:field="*{pharmacyName}"><br>
+
+      <label for="registrationId">Registration ID:</label><br>
+      <input type="text" id="registrationId" name="registrationId" th:field="*{registrationId}"><br>
+
+      <label for="contactNo">Contact No:</label><br>
+      <input type="text" id="contactNo" name="contactNo" th:field="*{contactNo}"><br>
+
+      <label for="ownerName">Owner of the Pharmacy:</label><br>
+      <input type="text" id="ownerName" name="ownerName" th:field="*{ownerName}"><br>
+
+      <label for="province">province:</label><br>
+      <input type="text" id="province" name="province" th:field="*{province}"><br>
+
+      <label for="district">district:</label><br>
+      <input type="text" id="district" name="district" th:field="*{district}"><br>
+
+      <label for="city">city:</label><br>
+      <input type="text" id="city" name="city" th:field="*{city}"><br>
+
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" th:field="*{password}"><br>
+
+      <label for="confirmPassword">Confirm Password:</label><br>
+      <input type="password" id="confirmPassword" name="confirmPassword" th:field="*{confirmPassword}"><br>
+
+      <input type="submit" value="Register">
+  </form>
+</body>
+</html>
