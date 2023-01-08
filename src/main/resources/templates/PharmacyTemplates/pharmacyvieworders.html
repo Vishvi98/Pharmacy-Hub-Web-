@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Orders</title>
+</head>
+<body>
+<a href="/pharmacy/dashboard">
+  <button>Dashboard</button>
+</a>
+<a href="/pharmacy/viewinventory">
+  <button>Inventory</button>
+</a>
+<a href="/pharmacy/viewpharmacy">
+  <button>Pharmacy</button>
+</a>
+<a href="/pharmacy/viewprescriptions">
+  <button>Prescriptions</button>
+</a>
+<a href="/pharmacy/vieworders">
+  <button>Orders</button>
+</a>
+<a href="/pharmacy/chat">
+  <button>Chat with customers</button>
+</a>
+<a href="/pharmacy/settings">
+  <button>Application Settings</button>
+</a>
+<a href="/pharmacy/technicalhelp">
+  <button>Get Technical help</button>
+</a>
+<a href="/logout">
+  <button>Logout</button>
+</a>
+<h1>Orders</h1>
+<br><br>
+<table>
+  <tr>
+    <th>Order ID</th>
+    <th>Customer Username</th>
+    <th>Medicine ID</th>
+    <th>Quantity</th>
+    <th>Customer Contact</th>
+  </tr>
+  <th:block th:each="order : ${orderList}">
+    <tr>
+      <td th:text="${order.orderId}"></td>
+      <td th:text="${order.customerUsername}"></td>
+      <td th:text="${order.medicineId}"></td>
+      <td th:text="${order.quantity}"></td>
+      <td th:text="${order.customerContact}"></td>
+      <td>
+        <form action="#" th:action="@{/pharmacy/vieworders/{orderId}(orderId=${order.orderId})}" method="post">
+          <a>
+            <button>Delete order>></button>
+          </a>
+        </form>
+      </td>
+    </tr>
+  </th:block>
+</table>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${prescription.prescriptionId}"></title>
+</head>
+<body>
+<a href="/pharmacy/dashboard">
+  <button>Dashboard</button>
+</a>
+<a href="/pharmacy/viewinventory">
+  <button>Inventory</button>
+</a>
+<a href="/pharmacy/viewpharmacy">
+  <button>Pharmacy</button>
+</a>
+<a href="/pharmacy/viewprescriptions">
+  <button>Prescriptions</button>
+</a>
+<a href="/pharmacy/vieworders">
+  <button>Orders</button>
+</a>
+<a href="/pharmacy/chat">
+  <button>Chat with customers</button>
+</a>
+<a href="/pharmacy/settings">
+  <button>Application Settings</button>
+</a>
+<a href="/pharmacy/technicalhelp">
+  <button>Get Technical help</button>
+</a>
+<a href="/logout">
+  <button>Logout</button>
+</a>
+
+<h1 th:text="${prescription.prescriptionId}"></h1>
+<br><br>
+<h2>Customer username: </h2>
+<h4 th:text="${prescription.customerUsername}"></h4>
+<br>
+<h2>Date: </h2>
+<h4 th:text="${prescription.date}"></h4>
+<br>
+
+<br><br>
+<form action="#" th:action="@{/pharmacy/acceptprescription/{prescriptionId}(prescriptionId=${prescription.prescriptionId})}" th:object="${prescriptionForm}" method="post">
+  <label for="remarks">Remarks:</label><br>
+  <input type="text" id="remarks" name="remarks" th:field="*{remarks}"><br>
+
+  <label for="price">Price:</label><br>
+  <input type="text" id="price" name="price" th:field="*{price}"><br>
+
+  <input type="submit" value="Accept Order">
+</form>
+</body>
+</html>

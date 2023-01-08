@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory</title>
+</head>
+<body>
+<a href="/pharmacy/dashboard">
+    <button>Dashboard</button>
+</a>
+<a href="/pharmacy/viewinventory">
+    <button>Inventory</button>
+</a>
+<a href="/pharmacy/viewpharmacy">
+    <button>Pharmacy</button>
+</a>
+<a href="/pharmacy/viewprescriptions">
+    <button>Prescriptions</button>
+</a>
+<a href="/pharmacy/vieworders">
+    <button>Orders</button>
+</a>
+<a href="/pharmacy/chat">
+    <button>Chat with customers</button>
+</a>
+<a href="/pharmacy/settings">
+    <button>Application Settings</button>
+</a>
+<a href="/pharmacy/technicalhelp">
+    <button>Get Technical help</button>
+</a>
+<a href="/logout">
+    <button>Logout</button>
+</a>
+<h1>Inventory</h1>
+<br><br>
+<table>
+    <tr>
+        <th>Medicine Name</th>
+        <th>Medicine Id</th>
+        <th>Quantity</th>
+    </tr>
+    <th:block th:each="medicine : ${medicineList}">
+        <tr>
+            <td th:text="${medicine.medicineName}"></td>
+            <td th:text="${medicine.medicineId}"></td>
+            <td th:text="${medicine.quantity}"></td>
+            <td>
+                <form action="#" th:action="@{/pharmacy/viewinventory/{medicineId}(medicineId=${medicine.medicineId})}" method="post">
+                    <a>
+                        <button>View full details>></button>
+                    </a>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<br><br>
+<a href="/pharmacy/addmedicine">
+    <button>Add Medicine</button>
+</a>
+</body>
+</html>

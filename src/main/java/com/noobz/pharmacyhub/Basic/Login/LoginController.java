@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutionException;
 @Controller
 public class LoginController {
 
+    public static String registrationId = null;
     private static final String ADMIN_USERNAME = "admin";
     private static final String ADMIN_PASSWORD = "abcd";
 
@@ -32,6 +33,7 @@ public class LoginController {
         model.addAttribute("loginDetails", loginForm);
         if(loginForm.getRegistrationId().equals(ADMIN_USERNAME) && loginForm.getPassword().equals(ADMIN_PASSWORD))
         {
+            registrationId = "admin";
             return "redirect:/admin/dashboard";
         }
         else
@@ -48,6 +50,7 @@ public class LoginController {
                 }
                 else
                 {
+                    registrationId = loginForm.getRegistrationId();
                     return "redirect:/pharmacy/dashboard";
                 }
             }

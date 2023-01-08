@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${medicine.medicineName}"></title>
+</head>
+<body>
+<a href="/pharmacy/dashboard">
+  <button>Dashboard</button>
+</a>
+<a href="/pharmacy/viewinventory">
+  <button>Inventory</button>
+</a>
+<a href="/pharmacy/viewpharmacy">
+  <button>Pharmacy</button>
+</a>
+<a href="/pharmacy/viewprescriptions">
+  <button>Prescriptions</button>
+</a>
+<a href="/pharmacy/vieworders">
+  <button>Orders</button>
+</a>
+<a href="/pharmacy/vieworders">
+  <button>Orders</button>
+</a>
+<a href="/pharmacy/chat">
+  <button>Chat with customers</button>
+</a>
+<a href="/pharmacy/settings">
+  <button>Application Settings</button>
+</a>
+<a href="/pharmacy/technicalhelp">
+  <button>Get Technical help</button>
+</a>
+<a href="/logout">
+  <button>Logout</button>
+</a>
+<h1 th:text="${medicine.medicineName}"></h1>
+<br><br>
+<h2>Medicine Id: </h2>
+<h4 th:text="${medicine.medicineId}"></h4>
+<br>
+<h2>Quantity: </h2>
+<h4 th:text="${medicine.quantity}"></h4>
+<br>
+<h2>How to use: </h2>
+<h4 th:text="${medicine.howToUse}"></h4>
+<br>
+<h2>Side effects: </h2>
+<h4 th:text="${medicine.sideEffects}"></h4>
+<br>
+
+<br><br>
+<a href="/pharmacy/addmedicine">
+  <button>Add Medicine</button>
+</a>
+<form action="#" th:action="@{/pharmacy/deletemedicine/{medicineId}(medicineId=${medicine.medicineId})}" method="post">
+  <a>
+    <button>Delete</button>
+  </a>
+</form>
+</body>
+</html>
