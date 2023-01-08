@@ -1,5 +1,6 @@
 package com.noobz.pharmacyhub.Admin.AddPharmacies;
 
+import com.noobz.pharmacyhub.Basic.Login.LoginController;
 import com.noobz.pharmacyhub.Classes.Account;
 import com.noobz.pharmacyhub.Other.PasswordSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,14 @@ public class AdminAddPharmaciesController {
     @GetMapping("/addpharmacy")
     public String viewAddPharmacyPage(Model model)
     {
-        model.addAttribute("signupDetails", new AddPharmaciesForm());
-        return "AdminTemplates/adminaddpharmacy";
+        if(LoginController.registrationId == null || !LoginController.registrationId.equals("admin"))
+        {
+            return "redirect:/login";
+        }
+        else {
+            model.addAttribute("signupDetails", new AddPharmaciesForm());
+            return "AdminTemplates/adminaddpharmacy";
+        }
     }
 
     @PostMapping("/addpharmacy")

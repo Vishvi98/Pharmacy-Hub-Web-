@@ -1,5 +1,6 @@
 package com.noobz.pharmacyhub.Admin.RemoveCustomers;
 
+import com.noobz.pharmacyhub.Basic.Login.LoginController;
 import com.noobz.pharmacyhub.Classes.CustomerAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,15 @@ public class AdminRemoveCustomersController {
 
     @GetMapping("/removecustomers")
     public String viewAdminRemoveCustomers(Model model) throws ExecutionException, InterruptedException {
-        List<CustomerAccount> customerAccountList = new ArrayList<>(adminRemoveCustomersService.getAllAccounts());
-        model.addAttribute("accountsList", customerAccountList);
-        return "AdminTemplates/adminremovecustomers";
+        if(LoginController.registrationId == null || !LoginController.registrationId.equals("admin"))
+        {
+            return "redirect:/login";
+        }
+        else {
+            List<CustomerAccount> customerAccountList = new ArrayList<>(adminRemoveCustomersService.getAllAccounts());
+            model.addAttribute("accountsList", customerAccountList);
+            return "AdminTemplates/adminremovecustomers";
+        }
     }
 
     @PostMapping("/deletecustomer/{username}")

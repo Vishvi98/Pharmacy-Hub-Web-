@@ -1,5 +1,6 @@
 package com.noobz.pharmacyhub.Admin.RemoveMedicine;
 
+import com.noobz.pharmacyhub.Basic.Login.LoginController;
 import com.noobz.pharmacyhub.Classes.Medicine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,9 +23,15 @@ public class AdminRemoveMedicineController {
 
     @GetMapping("/removemedicine")
     public String viewAdminRemoveMedicine(Model model) throws ExecutionException, InterruptedException {
-        List<Medicine> medicineList = new ArrayList<>(adminRemoveMedicineService.getAllMedicine());
-        model.addAttribute("medicineList", medicineList);
-        return "AdminTemplates/adminremovemedicine";
+        if(LoginController.registrationId == null || !LoginController.registrationId.equals("admin"))
+        {
+            return "redirect:/login";
+        }
+        else {
+            List<Medicine> medicineList = new ArrayList<>(adminRemoveMedicineService.getAllMedicine());
+            model.addAttribute("medicineList", medicineList);
+            return "AdminTemplates/adminremovemedicine";
+        }
     }
 
     @PostMapping("/deletemedicine/{medicineId}")

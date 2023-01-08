@@ -1,5 +1,6 @@
 package com.noobz.pharmacyhub.Basic.LandingPage;
 
+import com.noobz.pharmacyhub.Basic.Login.LoginController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ public class LandingController {
     @GetMapping("/logout")
     public String viewLogout(Model model)
     {
+        LoginController.registrationId = null;
         return "redirect:/login";
     }
 }

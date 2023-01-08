@@ -1,5 +1,6 @@
 package com.noobz.pharmacyhub.Admin.ViewAds;
 
+import com.noobz.pharmacyhub.Basic.Login.LoginController;
 import com.noobz.pharmacyhub.Classes.Advertisement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +22,14 @@ public class AddAdsController {
     @GetMapping("/addadvertisement")
     public String viewAddAdvertisement(Model model)
     {
-        model.addAttribute("addDetails", new Advertisement());
-        return "AdminTemplates/adminaddadvertisement";
+        if(LoginController.registrationId == null || !LoginController.registrationId.equals("admin"))
+        {
+            return "redirect:/login";
+        }
+        else {
+            model.addAttribute("addDetails", new Advertisement());
+            return "AdminTemplates/adminaddadvertisement";
+        }
     }
 
     @PostMapping("/addadvertisement")

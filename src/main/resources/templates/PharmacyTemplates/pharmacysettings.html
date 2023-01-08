@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+</head>
+<body>
+<a href="/pharmacy/dashboard">
+  <button>Dashboard</button>
+</a>
+<a href="/pharmacy/viewinventory">
+  <button>Inventory</button>
+</a>
+<a href="/pharmacy/viewpharmacy">
+  <button>Pharmacy</button>
+</a>
+<a href="/pharmacy/viewprescriptions">
+  <button>Prescriptions</button>
+</a>
+<a href="/pharmacy/vieworders">
+  <button>Orders</button>
+</a>
+<a href="/pharmacy/chat">
+  <button>Chat with customers</button>
+</a>
+<a href="/pharmacy/settings">
+  <button>Application Settings</button>
+</a>
+<a href="/pharmacy/technicalhelp">
+  <button>Get Technical help</button>
+</a>
+<a href="/logout">
+  <button>Logout</button>
+</a>
+<h1>Application settings</h1>
+
+<form action="#" th:action="@{/pharmacy/changename/{registrationId}(registrationId=${registrationId})}" th:object="${accountForm}" method="post">
+  <label for="pharmacyName">Change Pharmacy Name:</label><br>
+  <input type="text" id="pharmacyName" placeholder="New Pharmacy Name" name="pharmacyName" th:field="*{pharmacyName}"><br>
+  <input type="submit" value="Change">
+</form>
+
+<br><br>
+
+<form action="#" th:action="@{/pharmacy/changecontact/{registrationId}(registrationId=${registrationId})}" th:object="${accountForm}" method="post">
+  <label for="contact">Change Contact:</label><br>
+  <input type="text" id="contact" placeholder="New Contact" name="contact" th:field="*{contactNo}"><br>
+  <input type="submit" value="Change">
+</form>
+
+<br><br>
+
+<form action="#" th:action="@{/pharmacy/changeownername/{registrationId}(registrationId=${registrationId})}" th:object="${accountForm}" method="post">
+  <label for="ownerName">Change Owner Name:</label><br>
+  <input type="text" id="ownerName" placeholder="New Owner Name" name="ownerName" th:field="*{ownerName}"><br>
+  <input type="submit" value="Change">
+</form>
+
+<br><br>
+
+<form action="#" th:action="@{/pharmacy/changepassword/{registrationId}(registrationId=${registrationId})}" th:object="${passwordForm}" method="post">
+  <label for="currentPassword">Current Password:</label><br>
+  <input type="password" id="currentPassword" placeholder="Current Password" name="currentPassword" th:field="*{currentPassword}"><br>
+  <label for="newPassword">New Password:</label><br>
+  <input type="password" id="newPassword" placeholder="New Password" name="newPassword" th:field="*{newPassword}"><br>
+  <label for="confirmPassword">Confirm Password:</label><br>
+  <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" th:field="*{confirmPassword}"><br>
+  <input type="submit" value="Change">
+</form>
+
+
+</body>
+</html>

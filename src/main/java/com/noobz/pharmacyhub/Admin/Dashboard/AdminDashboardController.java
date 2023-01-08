@@ -1,5 +1,6 @@
 package com.noobz.pharmacyhub.Admin.Dashboard;
 
+import com.noobz.pharmacyhub.Basic.Login.LoginController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +18,18 @@ public class AdminDashboardController {
 
     @GetMapping("/dashboard")
     public String viewPharmacyDashboard(Model model) throws ExecutionException, InterruptedException {
-        model.addAttribute("pharmacyCount", adminDashboardService.countPharmacies());
-        model.addAttribute("customerCount", adminDashboardService.countCustomers());
-        model.addAttribute("medicineCount", adminDashboardService.countMedicine());
-        model.addAttribute("adCount", adminDashboardService.countAdvertisements());
-        return "AdminTemplates/admindashboard";
+
+        if(LoginController.registrationId == null || !LoginController.registrationId.equals("admin"))
+        {
+            return "redirect:/login";
+        }
+        else {
+            model.addAttribute("pharmacyCount", adminDashboardService.countPharmacies());
+            model.addAttribute("customerCount", adminDashboardService.countCustomers());
+            model.addAttribute("medicineCount", adminDashboardService.countMedicine());
+            model.addAttribute("adCount", adminDashboardService.countAdvertisements());
+
+            return "AdminTemplates/admindashboard";
+        }
     }
 }

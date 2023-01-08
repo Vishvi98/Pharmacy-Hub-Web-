@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Medicine</title>
+</head>
+<body>
+<a href="/pharmacy/dashboard">
+  <button>Dashboard</button>
+</a>
+<a href="/pharmacy/viewinventory">
+  <button>Inventory</button>
+</a>
+<a href="/pharmacy/viewpharmacy">
+  <button>Pharmacy</button>
+</a>
+<a href="/pharmacy/viewprescriptions">
+  <button>Prescriptions</button>
+</a>
+<a href="/pharmacy/vieworders">
+    <button>Orders</button>
+</a>
+<a href="/pharmacy/chat">
+  <button>Chat with customers</button>
+</a>
+<a href="/pharmacy/settings">
+  <button>Application Settings</button>
+</a>
+<a href="/pharmacy/technicalhelp">
+  <button>Get Technical help</button>
+</a>
+<a href="/logout">
+  <button>Logout</button>
+</a>
+<h1>Add Medicine</h1>
+
+<br><br>
+<form action="#" th:action="@{/pharmacy/addmedicine}" th:object="${medicineDetails}" method="post">
+    <label for="medicineId">Medicine ID:</label><br>
+    <input type="text" id="medicineId" name="medicineId" th:field="*{medicineId}"><br>
+
+    <label for="medicineName">Medicine Name:</label><br>
+    <input type="text" id="medicineName" name="medicineName" th:field="*{medicineName}"><br>
+
+    <label for="quantity">Quantity:</label><br>
+    <input type="text" id="quantity" name="quantity" th:field="*{quantity}"><br>
+
+    <label for="howToUse">How to use:</label><br>
+    <input type="text" id="howToUse" name="howToUse" th:field="*{howToUse}"><br>
+
+    <label for="sideEffects">Side effects:</label><br>
+    <input type="text" id="sideEffects" name="sideEffects" th:field="*{sideEffects}"><br>
+
+    <input type="submit" value="Save details">
+</form>
+
+</body>
+</html>

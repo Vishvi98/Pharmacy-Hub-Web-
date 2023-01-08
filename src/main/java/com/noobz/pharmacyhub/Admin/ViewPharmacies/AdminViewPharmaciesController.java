@@ -1,5 +1,6 @@
 package com.noobz.pharmacyhub.Admin.ViewPharmacies;
 
+import com.noobz.pharmacyhub.Basic.Login.LoginController;
 import com.noobz.pharmacyhub.Basic.Login.LoginForm;
 import com.noobz.pharmacyhub.Classes.Account;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,18 @@ public class AdminViewPharmaciesController {
 
     @GetMapping("/viewpharmacies")
     public String viewAdminViewPharmacies(Model model) throws ExecutionException, InterruptedException {
+        if(LoginController.registrationId == null || !LoginController.registrationId.equals("admin"))
+        {
+            return "redirect:/login";
+        }
+        else {
 
-        List<Account> accountsList = new ArrayList<>(adminViewPharmaciesService.getAllAccounts());
+            List<Account> accountsList = new ArrayList<>(adminViewPharmaciesService.getAllAccounts());
 
-        model.addAttribute("accountsList", accountsList);
+            model.addAttribute("accountsList", accountsList);
 
-        return "AdminTemplates/adminviewpharmacies";
+            return "AdminTemplates/adminviewpharmacies";
+        }
     }
 
     @PostMapping ("/deletepharmacy/{registrationId}")

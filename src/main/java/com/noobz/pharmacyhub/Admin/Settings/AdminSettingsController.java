@@ -1,5 +1,6 @@
 package com.noobz.pharmacyhub.Admin.Settings;
 
+import com.noobz.pharmacyhub.Basic.Login.LoginController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,12 @@ public class AdminSettingsController {
     @GetMapping("/settings")
     public String viewAdminSettings(Model model)
     {
-        return "AdminTemplates/adminsettings";
+        if(LoginController.registrationId == null || !LoginController.registrationId.equals("admin"))
+        {
+            return "redirect:/login";
+        }
+        else {
+            return "AdminTemplates/adminsettings";
+        }
     }
 }
