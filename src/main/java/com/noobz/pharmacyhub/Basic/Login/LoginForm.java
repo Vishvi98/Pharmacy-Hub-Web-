@@ -3,6 +3,7 @@ package com.noobz.pharmacyhub.Basic.Login;
 public class LoginForm {
     String registrationId;
     String password;
+    String message;
 
     public LoginForm() {
     }
@@ -22,4 +23,5 @@ public class LoginForm {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

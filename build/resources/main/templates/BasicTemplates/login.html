@@ -3,34 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="style/login.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2? family=Poppins:wght@100;200;300;400;600;700&display+swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
 </head>
-<body>
-    <a href="/aboutus">
-        <button>About Us</button>
-    </a>
-    <a href="/contactus">
-        <button>Contact Us</button>
-    </a>
-    <a href="/login">
-        <button>Login</button>
-    </a>
-    <a href="/signup">
-        <button>Signup</button>
-    </a>
-  <h1>Login</h1>
-<br><br>
-<form action="#" th:action="@{/login}" th:object="${loginDetails}" method="post">
-    <label for="registrationId">Registration ID:</label>
-    <input type="text" id="registrationId" name="registrationId" th:field="*{registrationId}">
+<body background="images/loginSignup/Background1.png">
+    <section class="header">
+        <nav>
+            <a href="/index"><img src="images/loginSignup/Logo2.png"></a>
+            <div class="Links">
+                <ul>
+                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="/contactus">Contact Us</a></li>
+                    <li><a href="/login">Log in</a></li>
+                    <ul class="dropmenu2">
+                        <li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true">Log in as Admin</i></a></li>
+                        <li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true">Log in as Pharmacist</i></a></li>
+                    </ul>
+                    <li><a href="/signup">Sign Up</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="formBG">
+            <div class="text-box">
+                <h1>Login</h1>
+            </div>
+            <div class="form">
+                <form action="#" th:action="@{/login}" th:object="${loginDetails}" method="post">
+                    <label for="registrationId">Registration ID:</label>
+                    <input type="text" required id="registrationId" name="registrationId" th:field="*{registrationId}" placeholder="Enter your registration ID here..">
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" th:field="*{password}">
+                    <label for="password">Password:</label>
+                    <input type="password" required id="password" name="password" th:field="*{password}" placeholder="Enter your password here..">
 
-    <input type="submit" value="login">
-</form>
-  <br><br>
-<a href="/signup">
-    <button>Don't Have an Account yet? Register here</button>
-</a>
+                    <input id="logb" type="submit" value="Login">
+                </form>
+                <br>
+                <p id="accreg">Don't have an account yet? <a href="/signup" style="color:dodgerblue">Sign up</a>.</p>
+            </div>
+            <div class="logimg">
+                <input id="logpng" type="image" src="images/loginSignup/loginImage.png">
+            </div>
+        </div>
+
+    </section>
 </body>
 </html>

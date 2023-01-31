@@ -1,63 +1,251 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Inventory</title>
 </head>
+
+<link rel="stylesheet" href="/style/pharmacyInventory.css" />
 <body>
-<a href="/pharmacy/dashboard">
-    <button>Dashboard</button>
-</a>
-<a href="/pharmacy/viewinventory">
-    <button>Inventory</button>
-</a>
-<a href="/pharmacy/viewpharmacy">
-    <button>Pharmacy</button>
-</a>
-<a href="/pharmacy/viewprescriptions">
-    <button>Prescriptions</button>
-</a>
-<a href="/pharmacy/vieworders">
-    <button>Orders</button>
-</a>
-<a href="/pharmacy/chat">
-    <button>Chat with customers</button>
-</a>
-<a href="/pharmacy/settings">
-    <button>Application Settings</button>
-</a>
-<a href="/pharmacy/technicalhelp">
-    <button>Get Technical help</button>
-</a>
-<a href="/logout">
-    <button>Logout</button>
-</a>
-<h1>Inventory</h1>
-<br><br>
-<table>
-    <tr>
-        <th>Medicine Name</th>
-        <th>Medicine Id</th>
-        <th>Quantity</th>
-    </tr>
-    <th:block th:each="medicine : ${medicineList}">
-        <tr>
-            <td th:text="${medicine.medicineName}"></td>
-            <td th:text="${medicine.medicineId}"></td>
-            <td th:text="${medicine.quantity}"></td>
-            <td>
-                <form action="#" th:action="@{/pharmacy/viewinventory/{medicineId}(medicineId=${medicine.medicineId})}" method="post">
-                    <a>
-                        <button>View full details>></button>
-                    </a>
-                </form>
-            </td>
-        </tr>
-    </th:block>
-</table>
-<br><br>
-<a href="/pharmacy/addmedicine">
-    <button>Add Medicine</button>
-</a>
+<img
+        src="/images/dashboard/PharmacyBG1.png"
+        class="background"
+        alt="Body Background Image"
+/>
+
+<div class="navBarContainer">
+
+    <!-- setting the clicable dropdown -->
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">
+            <!-- <button onclick="myFunction()" id="userIcon"> -->
+            <!-- <img src="../images/profilePic.svg" id="userIcon" /> -->
+            <img src="/images/dashboard/profilePic.svg" class="dropbtn" />
+        </button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="/pharmacy/viewpharmacy">My Profile</a>
+            <a href="/logout">Logout</a>
+            <!-- <a href="">Contact</a> -->
+        </div>
+    </div>
+
+    <script>
+        /* When the user clicks on the button,
+      toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches(".dropbtn")) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains("show")) {
+                        openDropdown.classList.remove("show");
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- testing for notification -->
+    <!-- testing for notification -->
+    <div class="dropdownNotify">
+        <button onclick="myFunctionNotify()" class="dropbtnNotify">
+            <!-- <button onclick="myFunction()" id="userIcon"> -->
+            <!-- <img src="../images/profilePic.svg" id="userIcon" /> -->
+            <img
+                    src="/images/dashboard/notificationIcon.svg"
+                    class="dropbtnNotify"
+            />
+        </button>
+        <div id="myDropdownNotify" class="dropdownNotify-content">
+            <a href="">Message received from Customer 01.</a>
+            <a href="">Customer 03 placed an order</a>
+            <a href="">Admin : New features added. Click here to check.</a>
+        </div>
+    </div>
+
+    <!-- end -->
+    <script>
+        /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+        function myFunctionNotify() {
+            document.getElementById("myDropdownNotify").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches(".dropbtnNotify")) {
+                var dropdowns = document.getElementsByClassName(
+                    "dropdownNotify-content"
+                );
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains("show")) {
+                        openDropdown.classList.remove("show");
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- <img src="../images/profilePic.svg" id="userIcon" />
+
+    <img src="../images/notificationIcon.svg" id="notification" /> -->
+
+    <div class="notification"></div>
+</div>
+
+<div class="dashDiscription">
+    <h2>Inventory | List of Medicines</h2>
+</div>
+
+<!--
+<div class="dashBoardDescriptionParagraph">
+  A quick data overview of the inventory and Customers
+</div> -->
+<div class="sideBarContainer">
+    <img src="/images/dashboard/pharmacyLogo.svg" class="logoIcon" />
+
+    <div class="sideBarContainer">
+        <img src="/images/dashboard/pharmacyLogo.svg" class="logoIcon" />
+
+        <div class="sideBarButtonContainer">
+            <a href="/pharmacy/dashboard">
+                <button
+                        onclick="document.location='pharmacydashboard.html'"
+                        class="dashboardButton"
+                >
+                    <div id="dashboardLine">Dashboard</div>
+                    <img
+                            src="/images/dashboard/newDashboardIcon.svg"
+                            id="dashboardButtonIcon"
+                    />
+                </button>
+            </a>
+
+            <a href="/pharmacy/viewinventory">
+                <button class="iventoryButton">
+                    <div id="iventoryLine">Inventory</div>
+                    <img
+                            src="/images/dashboard/iventoryButton.svg"
+                            id="iventoryButtonIcon"
+                    />
+                </button>
+            </a>
+            <a href="/pharmacy/viewprescriptions">
+                <button
+                        onclick="document.location='pharmacyviewprescriptions.html'"
+                        class="prescriptionsButton"
+                >
+                    <div id="prescriptionLine">Prescriptions</div>
+                    <img
+                            src="/images/dashboard/prescriptionButtonIcon.svg"
+                            id="prescriptionButtonIcon"
+                    />
+                </button>
+            </a>
+            <a href="/pharmacy/vieworders">
+                <button class="customerChatButton">
+                    <img src="/images/dashboard/cart.svg" id="chatButtonIcon" />
+                    <div id="chatLine">Orders</div>
+                </button>
+            </a>
+
+            <a href="/pharmacy/viewpharmacy">
+                <button class="profileButton">
+                    <img src="/images/dashboard/profile.png" id="profileButtonIcon" />
+                    <div id="profileLine">Profile</div>
+                </button>
+            </a>
+
+            <a href="/pharmacy/settings">
+                <button class="applicationSettingsButton">
+                    <div id="applicationSettingsLine">Settings</div>
+
+                    <img
+                            src="/images/dashboard/ApplicationSettingsICon.svg"
+                            id="ApplicationSettingsICon"
+                    />
+                </button>
+            </a>
+            <a href="/pharmacy/technicalhelp">
+                <button class="getTechnicalHelpButton">
+                    <div id="getTechnicalHelpLine">Get Technical Help</div>
+                    <img src="/images/dashboard/gethelpIcon.svg" id="gethelpICon" />
+                </button>
+            </a>
+            <a href="/logout">
+                <button class="logOutButton">
+                    <div id="logOutLine">Log Out</div>
+                    <img src="/images/profile/logout.png" id="logOutIcon" />
+                </button>
+            </a>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footerTextContainer">
+            <div class="footerUp" id="footerUp">Powered by</div>
+            <div class="footerDown">
+                <b>Noobz69</b>
+            </div>
+        </div>
+    </footer>
+
+
+
+        <a href="/pharmacy/addmedicine">
+            <button class="add-item-btn">+ Add New Item</button>
+        </a>
+        <!--    <div class="inventory-search-container">
+                <input type="text" class="Inventory-search" placeholder="Search for anything here..">
+                <a href=""><img src="/images/medicineList/search-vector.png" class="search-icon" alt=""></a>
+            </div> -->
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Medicine ID</th>
+                    <th>Stock in Qty</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="medicine : ${medicineList}">
+                    <tr>
+                        <td th:text="${medicine.medicineName}"></td>
+                        <td th:text="${medicine.medicineId}"></td>
+                        <td th:text="${medicine.quantity}"></td>
+                        <td>
+                            <form action="#" th:action="@{/pharmacy/viewinventory/{medicineId}(medicineId=${medicine.medicineId})}" method="post">
+                                <a><button>View full Details<ion-icon name="chevron-forward-outline"></ion-icon></button></a>
+                            </form>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+    <!--<div class="statusCardContainer" id="statusCard3">-->
+    <!--  <div class="statusCardHeader">Customer</div>-->
+    <!--  <hr />-->
+    <!--  &lt;!&ndash; <div class="statusCardLeftSideUp">Count</div> &ndash;&gt;-->
+    <!--  <div class="statusCardLeftSideDown">Total no of Customers</div>-->
+    <!--  &lt;!&ndash; <div class="statusCardRightSideUp">Count</div> &ndash;&gt;-->
+    <!--  <div id="cardCountRightSideDown">Count</div>-->
+    <!--</div>-->
+</div>
 </body>
 </html>
